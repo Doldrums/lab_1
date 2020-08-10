@@ -1,0 +1,27 @@
+#include <iostream>
+#include <cmath>
+#include <algorithm>
+#include <array>
+using namespace std;
+bool is_negative(float n) {
+   return n < 0;
+}
+bool is_positive(float n) {
+   return n > 0;
+}
+int main() {
+  cout << "Please, write your coordinates:";
+  float x1, y1, x2, y2, x3, y3, x4, y4, x5, y5;
+  cin>> x1 >> y1 >> x2 >> y2 >> x3 >> y3 >>x4 >> y4 >> x5 >> y5;
+  float P0 = (x5-x1)*(y2-y1) - (y5-y1)*(x2-x1);
+  float P1 = (x5-x2)*(y3-y2) - (y5-y2)*(x3-x2);
+  float P2 = (x5-x3)*(y4-y3) - (y5-y3)*(x4-x3);
+  float P3 = (x5-x4)*(y1-y4) - (y5-y4)*(x1-x4);
+  array<float,4> lol = {P0, P1, P2, P3};
+  if (any_of(lol.begin(), lol.end(), [](int i){return i==0;})){
+    cout << "Oh, point on the borders.";
+    return 0;
+  } else if(all_of(lol.begin(), lol.end(), is_negative)||all_of(lol.begin(), lol.end(), is_positive)) cout<<"Yes, point inside.";
+  else cout<<"No, point not inside.";
+  return 0;
+}

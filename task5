@@ -1,0 +1,20 @@
+#include <iostream>
+using namespace std;
+int main (){
+    string login;
+    string password;
+    int attempt = 0;
+    while (attempt < 3){
+        cout<<"Please, enter login: ";
+        cin>>login;
+        cout<<"Please, enter password: ";
+        cin>>password;
+        if (login=="admin"&&password=="admin"){
+            cout<<"Access has granted.\n";
+            return 0;
+        } else cout<<"Access has restricted.\n";
+        attempt++;
+    }
+    cout << "Too many login attempts! Fuck off.";
+    return 0;
+}
